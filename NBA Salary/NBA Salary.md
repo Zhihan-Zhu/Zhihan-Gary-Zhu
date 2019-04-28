@@ -22,6 +22,8 @@ Now let us take a first look at the salary data: ![](https://github.com/Zhihan-Z
 
 As superstars, only 8% players have contracts greater than $20,000,000. On the contrary, over 61% players' salaries are below $5,000,000. This show a big gap between players. However, their contribution on the court differ a lot as well. As shown in Table 1, it is reasonalbe for the top players to have much higher salaries. Each of their statistics outstands the "Low-Salary" Players, especially Points Per Game, which is almost three times of the other group.
 
+<sub>**Table 1: Comparison of average stats of two groups with low and high salaries**</sub>
+
 |      |  Salary &lt; $5,000,000|  Salary &gt;$20,000,000|
 |------|-----------------------:|-----------------------:|
 | MP   |              16.6670251|              31.1589744|
@@ -78,6 +80,8 @@ The nonparametric bootstrap method draws sample from the original dataset, and c
 
 Using a Monte Carlo approach, the power of each method shown in Table 2 and Table 3 shows that nonparametric is more powerful. Therefore, in the remaining of the paper, nonparametric bootsrtrap method would be used for analysis.
 
+<sub>**Table 2: power for sigma=20**</sub>
+
 |        |  nonparametric|  parametric|
 |--------|--------------:|-----------:|
 | beta 0 |           0.57|        0.50|
@@ -90,6 +94,9 @@ Using a Monte Carlo approach, the power of each method shown in Table 2 and Tabl
 | beta 7 |           0.24|        0.07|
 | beta 8 |           0.29|        0.31|
 | beta 9 |           1.00|        1.00|
+
+<sub>**Table 3: power for sigma=15**</sub>
+
 
 |        |  nonparametric|  parametric|
 |--------|--------------:|-----------:|
@@ -137,6 +144,9 @@ There are positive relationship between Salary and Age, TRB, AST and PS.G, which
     ## Residual standard error: 5351000 on 451 degrees of freedom
     ## Multiple R-squared:  0.4946, Adjusted R-squared:  0.4846 
     ## F-statistic: 49.05 on 9 and 451 DF,  p-value: < 2.2e-16
+
+<sub>**Table 4: Summary of bootstrap result**</sub>
+
 
 |             |  estimated beta| 95% confidence interval        |
 |-------------|---------------:|:-------------------------------|
