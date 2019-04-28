@@ -18,7 +18,7 @@ Data
 
 This paper uses the 2017-2018 season players's salaries and stats of regular seaseon from Basketball Reference Website (“2017-18 NBA Player Stats”). Some players have been traded during the season and has record on more than one team. Therefore, these players stats will be averaged and put in the row of their last team. Moreover, some players have no records in some columns such as field goal percentage because they never made any shot attempts. These nan values would be simply repalced by zero to avoid computational errors.
 
-Now let us take a first look at the salary data: ![](NBA_Salary_files/figure-markdown_github/unnamed-chunk-2-1.png)
+Now let us take a first look at the salary data: ![](https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/NBA%20Salary/hist.png)
 
 As superstars, only 8% players have contracts greater than $20,000,000. On the contrary, over 61% players' salaries are below $5,000,000. This show a big gap between players. However, their contribution on the court differ a lot as well. As shown in Table 1, it is reasonalbe for the top players to have much higher salaries. Each of their statistics outstands the "Low-Salary" Players, especially Points Per Game, which is almost three times of the other group.
 
@@ -40,7 +40,7 @@ As superstars, only 8% players have contracts greater than $20,000,000. On the c
 | PF   |               1.5000000|               2.2000000|
 | PS.G |               6.5612903|              18.0205128|
 
-![](NBA_Salary_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/NBA%20Salary/scatter.png)
 
 The scatterplot matrix clearly shows there are relationships among salaries and the players' performance. The relationship between salaries and shooing percentage is not very obvious since most of the players have TS% (True Shooting Percentage) around 50%. This plot suggests positive linear relationships between salaries and TRB, AST, STL, BLK, TOV, PF and PS.G. Moreover, the linear pattern between salairies and PS.G is the most obvious.
 
