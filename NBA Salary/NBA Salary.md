@@ -57,7 +57,7 @@ TS% is chosen over FG% (Field Goal Percentage), 3P% (3-Point Percentage), 2p% (2
 
 The model is as follows:
 
-*S**a**l**a**r**y* = *β*<sub>0</sub> + *β*<sub>1</sub> \* *A**g**e* + *β*<sub>2</sub> \* *T**S*%+*β*<sub>3</sub> \* *T**R**B* + *β*<sub>4</sub> \* *A**S**T* + *β*<sub>5</sub> \* *S**T**L* + *β*<sub>6</sub> \* *B**L**K* + *β*<sub>7</sub> \* *T**O**V* + *β*<sub>8</sub> \* *P**F* + *β*<sub>9</sub> \* *P**S*.*G* + *ϵ*
+*Salary* = *β*<sub>0</sub> + *β*<sub>1</sub> \* *Age* + *β*<sub>2</sub> \* *TS*%+*β*<sub>3</sub> \* *TRB* + *β*<sub>4</sub> \* *AST* + *β*<sub>5</sub> \* *STL* + *β*<sub>6</sub> \* *BLK* + *β*<sub>7</sub> \* *TOV* + *β*<sub>8</sub> \* *PF* + *β*<sub>9</sub> \* *PS*.*G* + *ϵ*
 
 where *β*<sub>*i*</sub>, *i* = 0, ..., 9 are all the regression coefficients, and *ϵ* ∼ *N*(0, *σ*<sup>2</sup>) for some *σ*.
 
@@ -74,9 +74,9 @@ Using the original independent variable data, I will generate mock data of Salar
 
 *β*<sub>0</sub> = 15, *β*<sub>1</sub> = 3, *β*<sub>2</sub> = 5, *β*<sub>3</sub> = 4, *β*<sub>4</sub> = 6, *β*<sub>5</sub>, 5.5, *β*<sub>6</sub> = 3, *β*<sub>7</sub> = −3.2, *β*<sub>8</sub> = −2.5, *β*<sub>9</sub> = 10
 
-and adding a error term *ϵ* ∼ *N*(0, *σ*<sup>2</sup>) with *σ* = 15 and 20.
+and adding a error term ϵ *ϵ* ∼ *N*(0, *σ*<sup>2</sup>) with *σ* = 15 and 20.
 
-The nonparametric bootstrap method draws sample from the original dataset, and compute the coefficients on the sample. In the parametric bootstrap method, the independent variables are fixed, and resample is draw from $\\hat{\\epsilon}=\\hat{Y}-\\hat{\\beta}X$. For each method, a total of 100 bootstrap replications are created.
+The nonparametric bootstrap method draws sample from the original dataset, and compute the coefficients on the sample. In the parametric bootstrap method, the independent variables are fixed, and resample is draw from ![equation](https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/NBA%20Salary/equation.png). For each method, a total of 100 bootstrap replications are created.
 
 Using a Monte Carlo approach, the power of each method shown in Table 2 and Table 3 shows that nonparametric is more powerful. Therefore, in the remaining of the paper, nonparametric bootsrtrap method would be used for analysis.
 
