@@ -14,7 +14,7 @@ In this notebook, I look deep into an SQLite database that contains data of crim
 
 ## Naural Language Processing
 #### Web Scraping and Sentiment Analysis for steam reviews of No Man's Sky ([Jupyter]())
-No Man's Sky got massive negative reviews at its launch time because of its failure to meet the features it had promised to players. The situation has changed after several big updates. This notebook collects all the english steam reviews of this indie game, and explores how this game improves. Finally, a model is trained for sentiment analysis.
+*No Man's Sky* got massive negative reviews at its launch time because of its failure to meet the features it had promised to players. The situation has changed after several big updates. This notebook collects all the english steam reviews of this indie game, and explores how this game improves. Finally, a model is trained for sentiment analysis.
 
 #### Popular topics in mainstream media ([Jupyter]())
 What are the main topics of mainstream meidia from different countries for a same time period? Do they focus on the same news or not? This notebook collects over 5,000 articles from ***The New York Times*** and ***The Guardian*** for Feb, 2012 using APIs and BeautifulSoup, and tries to find trending topics and similar topics with NLP techniques.
