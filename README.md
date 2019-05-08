@@ -9,7 +9,7 @@ They are written in either Python or R.
 In this project I use the the 2017-2018 season players's salaries and stats of regular seaseon data to explore the most important factors that affect players salaries with a linear regression model. I use mocked data and Monte Carlo approach to choose between nonparametric bootstrap and parametric bootstrap based on their power of Hypothesis Test that whether coefficients equal to zero, and use the preferred one to create confidence interval for the coefficients.
 
 ## Data Analysis and Visualization
-#### San Francisco City Data Analysis ([Jupyter]())
+#### San Francisco City Data Analysis ([Jupyter](https://nbviewer.jupyter.org/github/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/SF%20Data%20Analysis.ipynb))
 In this notebook, I look deep into an SQLite database that contains data of crime, parking, schools, housing, etc., and gain insights of housing choices from various maps using Matplotlib Basemap toolkit.
 
 ## Naural Language Processing
