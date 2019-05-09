@@ -15,7 +15,7 @@ In this notebook, I look deep into an SQLite database that contains data of crim
 What are the main topics of mainstream meidia from different countries for a same time period? Do they focus on the same news or not? This notebook collects over 5,000 articles from ***The New York Times*** and ***The Guardian*** for Feb, 2012 using APIs and BeautifulSoup, and tries to find trending topics and similar topics with NLP techniques.
 
 ## Time Series
-#### Nintendo Stock Price Analysis ([R Markdown]())
+#### Nintendo Stock Price Analysis ([R Markdown](http://htmlpreview.github.io/?https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/Nintendo%20Stock/Final_Project.html))
 Time series analysis using ARIMA, POMP, GARCH models to log return of Nintendo Stock Price.
 
 ## Statistical Test
