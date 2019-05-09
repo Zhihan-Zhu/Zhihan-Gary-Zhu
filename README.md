@@ -13,7 +13,7 @@ In this project I use the the 2017-2018 season players's salaries and stats of r
 In this notebook, I look deep into an SQLite database that contains data of crime, parking, schools, housing, etc., and gain insights of housing choices from various maps using Matplotlib Basemap toolkit.
 
 ## Naural Language Processing
-#### Web Scraping and Sentiment Analysis for steam reviews of No Man's Sky ([Jupyter]())
+#### Web Scraping and Sentiment Analysis for steam reviews of No Man's Sky ([Jupyter](https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/No%20Man's%20Sky%20Analysis.ipynb))
 *No Man's Sky* got massive negative reviews at its launch time because of its failure to meet the features it had promised to players. The situation has changed after several big updates. This notebook collects all the english steam reviews of this indie game, and explores how this game improves. Finally, a model is trained for sentiment analysis.
 
 #### Popular topics in mainstream media ([Jupyter]())
