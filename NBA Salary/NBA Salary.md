@@ -2,7 +2,14 @@ NBA Player Salary
 ================
 Zhihan Zhu
 
+```r
+require(knitr)
+```
     ## Loading required package: knitr
+
+```r
+library(boot)
+```
 
 Introduction
 ------------
