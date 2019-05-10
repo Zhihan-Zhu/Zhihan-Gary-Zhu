@@ -18,9 +18,51 @@ Data
 
 This paper uses the 2017-2018 season players's salaries and stats of regular seaseon from Basketball Reference Website (“2017-18 NBA Player Stats”). Some players have been traded during the season and has record on more than one team. Therefore, these players stats will be averaged and put in the row of their last team. Moreover, some players have no records in some columns such as field goal percentage because they never made any shot attempts. These nan values would be simply repalced by zero to avoid computational errors.
 
-Now let us take a first look at the salary data: ![](https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/NBA%20Salary/hist.png)
+Now let us take a first look at the salary data: 
+
+```r
+stats=read.csv('stats1718.csv',header = TRUE)
+
+new_stats=stats[,c('Player','Age','Tm','MP','FG.','X3P.','X2P.','eFG.','FT.','TS.','PER','TRB','AST','STL','BLK','TOV','PF','PS.G')]
+
+new_stats$Player=as.character(new_stats$Player)
+new_stats$Tm=as.character(new_stats$Tm)
+
+a=unique(new_stats$Player)
+name=c()
+for (i in 1:length(a)){
+  if (sum(new_stats$Player==a[i])>1){
+    name=c(name,a[i])
+  }
+}
+
+for (i in 1:length(name)){
+  rowindex=which(new_stats$Player==name[i] & new_stats$Tm != 'TOT')
+  new_stats[rowindex[1]-1,]$Tm=new_stats[tail(rowindex,1),]$Tm
+  new_stats=new_stats[-rowindex,]
+}
+
+
+salary=read.csv('NBA_season1718_salary.csv',header = TRUE)
+salary_stats=merge(new_stats,salary,by = c('Player','Tm'))
+colnames(salary_stats)[colnames(salary_stats)=='season17_18']="Salary"
+salary_stats=salary_stats[,c(1:2,20,3:18)]
+salary_stats[is.na(salary_stats)] = 0
+hist(salary_stats$Salary/1e7,main='Histogram of NBA player Salary 2017-18',xlab='Salary (millions)')
+```
+
+![](https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/NBA%20Salary/hist.png)
 
 As superstars, only 8% players have contracts greater than $20,000,000. On the contrary, over 61% players' salaries are below $5,000,000. This show a big gap between players. However, their contribution on the court differ a lot as well. As shown in Table 1, it is reasonalbe for the top players to have much higher salaries. Each of their statistics outstands the "Low-Salary" Players, especially Points Per Game, which is almost three times of the other group.
+
+```r
+com1=apply(salary_stats[salary_stats$Salary<=5000000,][,5:19],2,mean)
+com2=apply(salary_stats[salary_stats$Salary>=20000000,][,5:19],2,mean)
+table=data.frame(com1,com2)
+colnames(table)=c('Salary < $5,000,000','Salary >$20,000,000')
+kable(table,caption = 'Table 1: Comparison of average stats of two groups with low and high salaries')
+
+```
 
 <sub>**Table 1: Comparison of average stats of two groups with low and high salaries**</sub>
 
@@ -41,6 +83,10 @@ As superstars, only 8% players have contracts greater than $20,000,000. On the c
 | TOV  |               0.9186380|               2.1333333|
 | PF   |               1.5000000|               2.2000000|
 | PS.G |               6.5612903|              18.0205128|
+
+```r
+pairs(salary_stats[,c(3:4,11:19)])
+```
 
 ![](https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/NBA%20Salary/scatter.png)
 
@@ -80,6 +126,66 @@ The nonparametric bootstrap method draws sample from the original dataset, and c
 
 Using a Monte Carlo approach, the power of each method shown in Table 2 and Table 3 shows that nonparametric is more powerful. Therefore, in the remaining of the paper, nonparametric bootsrtrap method would be used for analysis.
 
+```r
+lm_coef <- function(data,index){
+  d=data[index,]
+  model=lm(Salary~.,data=d)
+  model$coefficients
+}
+
+lm_coef_2 <- function(data,index){
+  SS_model=lm(Salary~.,data=data)
+  ehat=SS_model$residuals
+  yhat=SS_model$fitted.values
+  estar=ehat[index]
+  ystar=yhat+estar
+  model=lm(ystar~.-Salary,data=data)
+  model$coefficients
+}
+
+coeff_test <- function(error){
+  salary_stats_sim$Salary=m%*%b+error
+  data=salary_stats_sim[,c(1:9,11)]
+  lm_sim_boot=boot(data = data, statistic = lm_coef,R = 100,parallel = "snow", cl = makeCluster(2), ncpus = 2)
+  obs_b=lm_sim_boot$t0
+  bs=lm_sim_boot$t
+  
+  pvalues=c()
+  for (i in 1:length(obs_b)){
+    pvalues=c(pvalues, 2*min(mean(bs[,i]>=0),mean(bs[,i]<=0)))
+  }
+  pvalues
+}
+
+coeff_test_2 <- function(error){
+  salary_stats_sim$Salary=m%*%b+error
+  data=salary_stats_sim[,c(1:9,11)]
+  lm_sim_boot_2=boot(data = data, statistic = lm_coef_2,R = 500,parallel = "snow", cl = makeCluster(2), ncpus = 2)
+  obs_b=lm_sim_boot_2$t0
+  bs=lm_sim_boot_2$t
+  
+  pvalues=c()
+  for (i in 1:length(obs_b)){
+    pvalues=c(pvalues, 2*min(mean(bs[,i]>=0),mean(bs[,i]<=0)))
+  }
+  pvalues
+}
+```
+
+
+```r
+load('power.rda')
+p1=apply(test,1,function(x){mean(x<=0.05)})
+p2=apply(test2,1,function(x){mean(x<=0.05)})
+p3=apply(test3,1,function(x){mean(x<=0.05)})
+p4=apply(test4,1,function(x){mean(x<=0.05)})
+
+table=data.frame(p1,p2)
+rownames(table)=c(paste("beta",0:9))
+colnames(table)=c('nonparametric','parametric')
+kable(table,caption = 'Table 2: power for sigma=20')
+```
+
 <sub>**Table 2: power for sigma=20**</sub>
 
 |        |  nonparametric|  parametric|
@@ -94,6 +200,13 @@ Using a Monte Carlo approach, the power of each method shown in Table 2 and Tabl
 | beta 7 |           0.24|        0.07|
 | beta 8 |           0.29|        0.31|
 | beta 9 |           1.00|        1.00|
+
+```r
+table=data.frame(p1,p2)
+rownames(table)=c(paste("beta",0:9))
+colnames(table)=c('nonparametric','parametric')
+kable(table,caption = 'Table 3: power for sigma=15')
+```
 
 <sub>**Table 3: power for sigma=15**</sub>
 
@@ -117,6 +230,14 @@ Analysis
 The linear regression model concludes that Age, TRB, PF and PS.G are important at 0.05 level of significance, and AST is important at 0.1 level of significance. All the other variables are not statistically significant. The bootstrap 95% confidence interval also support this conclusion.
 
 There are positive relationship between Salary and Age, TRB, AST and PS.G, which are not suprising. As players play longer in the league, they get more skilled and are more likely to recieve good contracts. The effects of TRB, AST and PS.G support that statement that scoring is the most important thing people care since these three statistics have the most direct relation to scoring. Personal Fouls, on the other way, has a negative effect toward Salary. It also makes sense, since foul will give the opponent easy ways to score points.
+
+```r
+salary_stats_reg=salary_stats[,c(3,4,11,13:19)]
+
+SS_model=lm(Salary~.,data = salary_stats_reg)
+
+summary(SS_model)
+```
 
     ## 
     ## Call:
@@ -144,6 +265,24 @@ There are positive relationship between Salary and Age, TRB, AST and PS.G, which
     ## Residual standard error: 5351000 on 451 degrees of freedom
     ## Multiple R-squared:  0.4946, Adjusted R-squared:  0.4846 
     ## F-statistic: 49.05 on 9 and 451 DF,  p-value: < 2.2e-16
+
+
+```r
+lm_sim_boot=boot(data = salary_stats_reg, statistic = lm_coef,R = 1000)
+
+
+interval=c()
+for (i in 1:10){
+  ci=boot.ci(lm_sim_boot,type = 'perc',index=i)$perc[4:5]
+  ci=round(ci,4)
+  interval=c(interval,paste('(',ci[1],',',ci[2],')',sep = ''))
+}
+
+table=data.frame(lm_sim_boot$t0,interval)
+colnames(table)=c('estimated beta','95% confidence interval')
+
+kable(table,caption = 'Table 4: Summary of bootstrap result')
+```
 
 <sub>**Table 4: Summary of bootstrap result**</sub>
 
