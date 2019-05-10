@@ -8,10 +8,10 @@ They are written in either Python or R.
 In this notebook, I look deep into an SQLite database that contains data of crime, parking, schools, housing, etc., and gain insights of housing choices from various maps using Matplotlib Basemap toolkit.
 
 ## Naural Language Processing
-#### Web Scraping and Sentiment Analysis for steam reviews of No Man's Sky (Jupyter: [Data Collection](https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/No%20Man's%20Sky%20data%20collection.ipynb); [Analysis](https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/No%20Man's%20Sky%20Analysis.ipynb))
+#### Web Scraping and Sentiment Analysis for steam reviews of No Man's Sky (Jupyter: [Data Collection](https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/No%20Man's%20Sky/No%20Man's%20Sky%20data%20collection.ipynb); [Analysis](https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/No%20Man's%20Sky/No%20Man's%20Sky%20Analysis.ipynb))
 *No Man's Sky* got massive negative reviews at its launch time because of its failure to meet the features it had promised to players. The situation has changed after several big updates. This notebook collects all the english steam reviews of this indie game, and explores how this game improves. Finally, a model is trained for sentiment analysis.
 
-#### Popular topics in mainstream media ([Jupyter]())
+#### Popular topics in mainstream media ([Jupyter Code](https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/Trending%20articles/finalproject.ipynb); [presentation](https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/Trending%20articles/index.md))
 What are the main topics of mainstream meidia from different countries for a same time period? Do they focus on the same news or not? This notebook collects over 5,000 articles from ***The New York Times*** and ***The Guardian*** for Feb, 2012 using APIs and BeautifulSoup, and tries to find trending topics and similar topics with NLP techniques.
 
 ## Time Series
