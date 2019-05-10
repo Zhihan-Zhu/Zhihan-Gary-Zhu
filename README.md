@@ -4,7 +4,7 @@ This is a portfolio containing my data science projects for academic, self-learn
 They are written in either Python or R.
 
 ## Data Analysis and Visualization
-#### San Francisco City Data Analysis ([Jupyter](https://nbviewer.jupyter.org/github/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/SF%20Data%20Analysis.ipynb))
+#### San Francisco City Data Analysis ([Jupyter](https://nbviewer.jupyter.org/github/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/SF%20Data/SF%20Data%20Analysis.ipynb))
 In this notebook, I look deep into an SQLite database that contains data of crime, parking, schools, housing, etc., and gain insights of housing choices from various maps using Matplotlib Basemap toolkit.
 
 ## Naural Language Processing
