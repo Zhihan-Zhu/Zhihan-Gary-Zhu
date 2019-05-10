@@ -1,5 +1,3 @@
-<a href="/Zhihan-Gary-Zhu">Home</a>
-
 # Mr./ Trump/ Said 
 ## The analysis of trending words in the last week of February
 ##  Yuren Zhang, Zhihan Zhu 
