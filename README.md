@@ -14,6 +14,10 @@ In this notebook, I look deep into an SQLite database that contains data of crim
 #### Popular topics in mainstream media ([Jupyter Code](https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/Trending%20articles/finalproject.ipynb); [presentation](https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/Trending%20articles/index.md))
 What are the main topics of mainstream meidia from different countries for a same time period? Do they focus on the same news or not? This notebook collects over 5,000 articles from ***The New York Times*** and ***The Guardian*** for the last week of Feb, 2012 using APIs and BeautifulSoup, and tries to find trending topics and similar topics with NLP techniques.
 
+## Machine Learning
+#### Home Credit Default Risk Challenge ([Jupyter](https://nbviewer.jupyter.org/github/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/Home%20Credit%20Default%20Risk/Home%20Credit%20Risk.ipynb))
+This problem is a former competition on Kaggle that predicts the applicants' capability of repaying loans. In this notebook, I am not compete. I read all the great kernels in this competition and tried to learn from those top competitors about how to gain insights from massive data and do feature engineering.
+
 ## Time Series
 #### Nintendo Stock Price Analysis ([R Markdown](http://htmlpreview.github.io/?https://github.com/Zhihan-Zhu/Zhihan-Gary-Zhu/blob/master/Nintendo%20Stock/Final_Project.html))
 Time series analysis using ARIMA, POMP, GARCH models to log return of Nintendo Stock Price.
